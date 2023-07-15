@@ -5,6 +5,7 @@
       "genre": "Classic",
       "img": "https://i2-prod.walesonline.co.uk/incoming/article6890072.ece/ALTERNATES/s615b/hp1.jpg",
       "publicationDate": "2005-04-10",
+      "publicationYear":"2005",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -13,6 +14,7 @@
       "genre": "Fiction",
       "img": "https://example.com/to-kill-a-mockingbird.jpg",
       "publicationDate": "1990-07-11",
+      "publicationYear":"1990",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -21,6 +23,7 @@
       "genre": "Science Fiction",
       "img": "https://www.adazing.com/wp-content/uploads/2022/12/Harry-Potter-Book-Covers-Half-Blood-Prince-683x1024.jpg",
       "publicationDate": "1999-06-08",
+      "publicationYear":"1999",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -29,6 +32,7 @@
       "genre": "Romance",
       "img": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2016%2F09%2F9781408855706.jpg",
       "publicationDate": "2013-01-28",
+      "publicationYear":"2013",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -37,6 +41,7 @@
       "genre": "Coming-of-age",
       "img": "https://images.booksense.com/images/238/380/9780358380238.jpg",
       "publicationDate": "2011-07-16",
+      "publicationYear":"2011",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -45,6 +50,7 @@
       "genre": "Modernist",
       "img": "https://movieposters2.com/images/650636-b.jpg",
       "publicationDate": "2007-05-05",
+      "publicationYear":"2007",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -53,6 +59,7 @@
       "genre": "Adventure",
       "img": "https://i.pinimg.com/originals/32/e6/43/32e643dd0220f41496d5770211e8e4f7.jpg",
       "publicationDate": "2001-10-18",
+      "publicationYear":"2001",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -61,6 +68,7 @@
       "genre": "Fantasy",
       "img": "https://thebookcoverdesigner.com/wp-content/uploads/2021/02/Not-Be_tn-324x519.jpg",
       "publicationDate": "2007-09-21",
+      "publicationYear":"2007",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -69,6 +77,7 @@
       "genre": "Roamntic",
       "img": "https://2.bp.blogspot.com/-53f7JQCfro0/WTExwoDxuII/AAAAAAAAO0k/jxbwWL4y37wMN7Uo_mX334lGnDWPWzstgCLcB/s1600/Brishtir%2BThikana%2Bby%2BMuhammad%2BZafar%2BIqbal%2BPDF.jpg",
       "publicationDate": "2003-10-16",
+      "publicationYear":"2003",
       "publisherEmail": "publisher@example.com"
     },
     {
@@ -77,6 +86,7 @@
       "genre": "Fantasy",
       "img": "https://1.bp.blogspot.com/-LqRCFxZbxM4/Xi86RQP6sVI/AAAAAAAAaCg/kqxwNvtVusI1_jKmYmqAa0DZB5PKpn-bwCLcBGAsYHQ/s1600/Cyclone%2Bby%2BMuhammed%2BZafar%2BIqbal%2B-%2BBangla%2Bebook%2BPDF%2BCollection.jpg",
       "publicationDate": "2015-07-29",
+      "publicationYear":"2015",
       "publisherEmail": "publisher@example.com"
     }
 ]
