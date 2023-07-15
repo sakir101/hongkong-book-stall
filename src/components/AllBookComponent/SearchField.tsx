@@ -19,10 +19,8 @@ export default function SearchField() {
         className={`in input input-bordered border-2 border-stone-600 w-full  placeholder:p-[-1px] input-outline shadow-md ${
           status ? "placeholder:block" : "placeholder:invisible"
         } `}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            dispatch(searchResult(e.target.value));
-          }
+        onChange={(e) => {
+          dispatch(searchResult(e.target.value));
         }}
       />
     </div>
