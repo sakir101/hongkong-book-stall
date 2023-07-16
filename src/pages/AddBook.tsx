@@ -20,6 +20,7 @@ export default function AddBook() {
   }, [isSuccess, isError]);
 
   const onSubmit = (data: any) => {
+    console.log(typeof data);
     postBook({ data })
       .then(() => {})
       .catch((error: string) => {

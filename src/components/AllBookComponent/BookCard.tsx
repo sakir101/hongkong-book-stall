@@ -1,4 +1,7 @@
-import { useDeleteBookDataMutation } from "../../redux/features/book/bookApi";
+import {
+  useAddBookToWishListMutation,
+  useDeleteBookDataMutation,
+} from "../../redux/features/book/bookApi";
 import { IBook } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -10,8 +13,9 @@ interface IProps {
 
 export default function BookCard({ book }: IProps) {
   const { title, author, genre, publicationDate, img, _id } = book;
-  const [deleteBook, { isLoading, isError, isSuccess }] =
-    useDeleteBookDataMutation();
+  const [deleteBook, { isError, isSuccess }] = useDeleteBookDataMutation();
+  const [addBook, { isSuccess: dataStored, isError: notStored }] =
+    useAddBookToWishListMutation();
 
   const notify = (response: string) => toast(response);
 
@@ -24,8 +28,50 @@ export default function BookCard({ book }: IProps) {
     }
   }, [isSuccess, isError]);
 
+  useEffect(() => {
+    if (notStored) {
+      notify("Sorry! Book data can not be stored properly in wishlist");
+    }
+    if (dataStored) {
+      notify("Book stored in wishlist Successfully");
+    }
+  });
+
+  const onSubmit = (book: any) => {
+    const {
+      title,
+      author,
+      genre,
+      publicationDate,
+      publicationYear,
+      publisherEmail,
+      img,
+    } = book;
+
+    const newBook = {
+      data: {
+        title: title,
+        author: author,
+        genre: genre,
+        img: img,
+        publicationDate: publicationDate,
+        publicationYear: publicationYear,
+        publisherEmail: publisherEmail,
+      },
+    };
+
+    console.log(newBook);
+    addBook(newBook)
+      .unwrap()
+      .then((response) => {
+        console.log("response:", response);
+      })
+      .catch((error: string) => {
+        console.error("Error posting data:", error);
+      });
+  };
+
   const handleDeleteBook = (id: any) => {
-    console.log(id);
     const proceed = window.confirm(`Are you sure you want to delete`);
     if (proceed) {
       deleteBook(id)
@@ -74,7 +120,10 @@ export default function BookCard({ book }: IProps) {
           >
             Remove
           </button>
-          <button className="btn bg-lime-400  p-3 hover:bg-lime-500">
+          <button
+            onClick={() => onSubmit(book)}
+            className="btn bg-lime-400  p-3 hover:bg-lime-500"
+          >
             Add to Wishlist
           </button>
         </div>

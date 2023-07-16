@@ -33,11 +33,9 @@ export default function BooksData() {
 
   if (result.trim().length !== 0) {
     books = book?.data;
-    console.log("if1:", books);
   }
   if (genre.trim().length !== 0 && publicationYear.trim().length === 0) {
     books = genreFilteredData?.data;
-    console.log("if:2", books);
   }
   if (publicationYear.trim().length !== 0 && genre.trim().length === 0) {
     books = yearFilteredData?.data;
@@ -51,7 +49,6 @@ export default function BooksData() {
     publicationYear.trim().length === 0
   ) {
     books = data?.data;
-    console.log("else:", books);
   }
 
   return (

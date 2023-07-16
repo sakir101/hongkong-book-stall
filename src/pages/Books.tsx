@@ -6,12 +6,19 @@ import { Link } from "react-router-dom";
 export default function Books() {
   return (
     <div>
-      <div className="flex ">
-        <SearchField />
-        <Link className="btn btn-primary my-10 mx-10" to="/addBook">
+      <div className="flex justify-end">
+        <Link className="btn btn-primary my-3 mx-5" to="/addBook">
           Add Book
         </Link>
+        <Link className="btn btn-warning my-3 mx-5" to="/wishList">
+          Wish List
+        </Link>
+        <Link className="btn btn-info my-3 mx-5" to="/bookList">
+          Book List
+        </Link>
       </div>
+
+      <SearchField />
 
       <FilterField />
       <BooksData />
