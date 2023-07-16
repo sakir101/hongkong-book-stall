@@ -1,32 +1,36 @@
 import { useForm } from "react-hook-form";
-import { usePostBookDataMutation } from "../redux/features/book/bookApi";
+import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import {
+  useGetSingleBookQuery,
+  useUpdateBookDataMutation,
+} from "../redux/features/book/bookApi";
+import Loading from "../components/Loading/Loading";
 import { useEffect } from "react";
 
-export default function AddBook() {
-  const { register, handleSubmit, reset } = useForm();
+export default function UpdateBook() {
+  const { register, handleSubmit } = useForm();
+  const { id } = useParams();
+  const [updateBookData, { isError, isSuccess }] = useUpdateBookDataMutation();
 
-  const [postBook, { isError, isSuccess }] = usePostBookDataMutation();
+  const { data, isLoading } = useGetSingleBookQuery(id);
+  const notify = (response: string) => toast(response);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   useEffect(() => {
     if (isError) {
-      reset();
       notify("Sorry! Book data can not be stored properly");
-    }
-    if (isSuccess) {
-      reset();
+    } else if (isSuccess) {
       notify("Book Stored Successfully");
     }
   }, [isSuccess, isError]);
 
-  const onSubmit = (data: any) => {
-    postBook({ data })
-      .then(() => {})
-      .catch((error: string) => {
-        console.error("Error posting data:", error);
-      });
+  const onSubmit = (updateData: any) => {
+    updateBookData({ id, data: updateData });
   };
-  const notify = (response: string) => toast(response);
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -40,11 +44,9 @@ export default function AddBook() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Harry Potter"
                   className="input input-bordered"
-                  {...register("title", {
-                    required: "Title is required",
-                  })}
+                  defaultValue={data?.data?.title}
+                  {...register("title")}
                 />
               </div>
               <div className="form-control">
@@ -53,11 +55,9 @@ export default function AddBook() {
                 </label>
                 <input
                   type="text"
-                  placeholder="J.K Rowling"
                   className="input input-bordered"
-                  {...register("author", {
-                    required: "Author is required",
-                  })}
+                  defaultValue={data?.data?.author}
+                  {...register("author")}
                 />
               </div>
               <div className="form-control">
@@ -66,9 +66,8 @@ export default function AddBook() {
                 </label>
                 <select
                   className="input input-bordered"
-                  {...register("genre", {
-                    required: "Genre is required",
-                  })}
+                  defaultValue={data?.data?.genre}
+                  {...register("genre")}
                 >
                   <option disabled selected>
                     Select genre
@@ -90,9 +89,8 @@ export default function AddBook() {
                   type="text"
                   placeholder="Your Book Cover Photo Link"
                   className="input input-bordered"
-                  {...register("img", {
-                    required: "Image is required",
-                  })}
+                  defaultValue={data?.data?.img}
+                  {...register("img")}
                 />
               </div>
               <div className="form-control">
@@ -103,9 +101,8 @@ export default function AddBook() {
                   type="date"
                   placeholder="Publication Date"
                   className="input input-bordered"
-                  {...register("publicationDate", {
-                    required: "Publication Date is required",
-                  })}
+                  defaultValue={data?.data?.publicationDate}
+                  {...register("publicationDate")}
                 />
               </div>
               <div className="form-control">
@@ -116,18 +113,13 @@ export default function AddBook() {
                   type="text"
                   placeholder="Your Book Cover Photo Link"
                   className="input input-bordered"
-                  {...register("publisherEmail", {
-                    required: "Email is required",
-                  })}
+                  disabled
+                  defaultValue={data?.data?.publisherEmail}
+                  {...register("publisherEmail")}
                 />
               </div>
-              <div className="form-control mt-6 flex-row justify-center">
-                <button className="btn btn-primary mx-5" type="submit">
-                  Add Book
-                </button>
-                <button className="btn bg-red-700 text-white" type="reset">
-                  Cancel
-                </button>
+              <div className="form-control mt-6 justify-center">
+                <button className="btn btn-primary mx-5">Update Book</button>
               </div>
             </form>
           </div>

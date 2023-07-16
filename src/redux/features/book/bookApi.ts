@@ -5,10 +5,14 @@ import { api } from "../../api/apiSlice"
 const bookApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getBooks: builder.query({
-            query: () => '/book'
+            query: () => '/book',
+            providesTags: ['books'],
         }),
         getSearchBook: builder.query({
             query: (searchTerm) => `/book/?searchTerm=${searchTerm}`
+        }),
+        getSingleBook: builder.query({
+            query: (id) => `/book/${id}`
         }),
         getFilterBook: builder.query({
             query: ({ genre, publicationYear }) => {
@@ -33,6 +37,21 @@ const bookApi = api.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+            invalidatesTags: ['books']
+        }),
+        updateBookData: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/book/${id}`,
+                method: 'PATCH',
+                body: data,
+            }),
+            invalidatesTags: ['books']
+        }),
+        deleteBookData: builder.mutation({
+            query: (id) => ({
+                url: `/book/${id}`,
+                method: 'DELETE',
+            }),
         }),
 
 
@@ -42,8 +61,11 @@ const bookApi = api.injectEndpoints({
 export const {
     useGetBooksQuery,
     useGetSearchBookQuery,
+    useGetSingleBookQuery,
     useGetFilterBookQuery,
-    usePostBookDataMutation
+    usePostBookDataMutation,
+    useUpdateBookDataMutation,
+    useDeleteBookDataMutation
 } = bookApi
 
 

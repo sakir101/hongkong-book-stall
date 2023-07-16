@@ -9,7 +9,9 @@ import Loading from "../Loading/Loading";
 import BookCard from "./BookCard";
 
 export default function BooksData() {
-  const { data, isLoading } = useGetBooksQuery(undefined);
+  const { data, isLoading } = useGetBooksQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
   const { result } = useAppSelector((state) => state.search);
   const { data: book } = useGetSearchBookQuery(result);
   const { genre, publicationYear } = useAppSelector((state) => state.filter);
