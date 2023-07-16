@@ -10,7 +10,7 @@ export default function BookCard({ book }: IProps) {
   return (
     <div className="card  bg-base-100 shadow-xl">
       <figure>
-        <img src={img} alt="Shoes" className="w-3/4" />
+        <img src={img} alt={title} className="w-3/4" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-2xl">{title}</h2>

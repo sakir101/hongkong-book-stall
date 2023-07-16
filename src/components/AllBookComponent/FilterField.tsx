@@ -21,6 +21,7 @@ export default function FilterField() {
         <option disabled selected>
           Select genre
         </option>
+        <option value="">none</option>
         <option value="Fiction">Fiction</option>
         <option value="Romance">Romance</option>
         <option value="Coming-of-age">Coming-of-age</option>
@@ -41,6 +42,7 @@ export default function FilterField() {
             placeholder="Type a year"
           />
         </option>
+        <option value="">none</option>
         {Array.from({ length: 2024 - 1900 }, (_, index) => (
           <option key={index} value={index + 1900}>
             {index + 1900}
