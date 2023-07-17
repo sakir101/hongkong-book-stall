@@ -4,6 +4,7 @@ import bookReducer from "./features/book/bookSlice";
 import cartReducer from "./features/cart/cartSlice";
 import searchReducer from "./features/filter/searchSlice";
 import filterReducer from "./features/filter/filterSlice";
+import userReducer from "./features/user/userSlice";
 
 const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
         book: bookReducer,
         search: searchReducer,
         filter: filterReducer,
+        user: userReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: (getDefaultMiddleware) =>

@@ -7,3 +7,18 @@ export interface IBook {
     publicationDate: string;
     publisherEmail: string;
 }
+
+export interface IResponse {
+    data?: {
+        data?: {
+            name?: {
+                firstName: string
+            };
+            img?: string;
+            email?: string;
+
+        };
+    };
+    error?: object
+}
+

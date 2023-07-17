@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../redux/hook";
 
 export default function Navbar() {
+  const { user } = useAppSelector((state) => state.user);
+
+  const handleLogout = () => {
+    sessionStorage.clear();
+    location.reload();
+  };
   const menuItems = (
     <>
       <li>
@@ -9,6 +16,43 @@ export default function Navbar() {
       <li>
         <Link to="/Books">Books</Link>
       </li>
+
+      <div className="dropdown dropdown-end">
+        <label
+          tabIndex={0}
+          className="btn m-1 bg-transparent border-transparent hover:bg-transparent hover:border-transparent"
+        >
+          <div className="avatar">
+            <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img
+                src={
+                  user?.img
+                    ? user.img
+                    : `https://www.seekpng.com/png/small/46-463314_v-th-h-user-profile-icon.png`
+                }
+              />
+            </div>
+          </div>
+        </label>
+        <ul
+          tabIndex={0}
+          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32 text-black"
+        >
+          <li>
+            <Link to="/signup">Sign up</Link>
+          </li>
+          <li>
+            {user?.email ? (
+              <button onClick={() => handleLogout()}>Logout</button>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+          </li>
+        </ul>
+      </div>
+      <p className="text-base font-bold mt-3">
+        {user.firstName ? <span>{user.firstName}</span> : <span></span>}
+      </p>
     </>
   );
 

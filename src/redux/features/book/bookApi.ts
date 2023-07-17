@@ -43,6 +43,7 @@ const bookApi = api.injectEndpoints({
             }),
             invalidatesTags: ['books']
         }),
+
         addBookToWishList: builder.mutation({
 
             query: ({ data }) => ({
@@ -53,6 +54,23 @@ const bookApi = api.injectEndpoints({
             }),
 
         }),
+
+        postUserData: builder.mutation({
+            query: ({ data }) => ({
+                url: '/auth/signup',
+                method: 'POST',
+                body: data
+            }),
+        }),
+
+        loginUserData: builder.mutation({
+            query: ({ data }) => ({
+                url: '/auth/login',
+                method: 'POST',
+                body: data
+            }),
+        }),
+
         updateBookData: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/book/${id}`,
@@ -86,6 +104,8 @@ export const {
     useGetFilterBookQuery,
     usePostBookDataMutation,
     useAddBookToWishListMutation,
+    usePostUserDataMutation,
+    useLoginUserDataMutation,
     useUpdateBookDataMutation,
     useDeleteBookDataMutation,
     useDeleteBookDataFromWishListMutation
