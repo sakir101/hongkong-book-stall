@@ -9,7 +9,7 @@ export default function BookList() {
   });
   return (
     <>
-      <div className="bg-blue-500 py-5 mx-96 my-10 rounded-2xl">
+      <div className="bg-blue-500 py-5 mx-40 lg:mx-96 my-10 rounded-2xl">
         <h1 className="text-2xl text-center font-bold  text-white">
           Your BookList
         </h1>
