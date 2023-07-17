@@ -21,9 +21,9 @@ export default function UpdateBook() {
 
   useEffect(() => {
     if (isError) {
-      notify("Sorry! Book data can not be stored properly");
+      notify("Sorry! Book data can not be updated properly");
     } else if (isSuccess) {
-      notify("Book Stored Successfully");
+      notify("Book updated Successfully");
     }
   }, [isSuccess, isError]);
 

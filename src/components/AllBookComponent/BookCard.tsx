@@ -1,7 +1,6 @@
 import {
   useAddBookToBookListMutation,
   useAddBookToWishListMutation,
-  useDeleteBookDataMutation,
 } from "../../redux/features/book/bookApi";
 import { IBook } from "../../types/globalTypes";
 import { Link } from "react-router-dom";
@@ -9,8 +8,6 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { BiSolidCommentAdd } from "react-icons/bi";
 import { TbJewishStarFilled } from "react-icons/tb";
-import { AiTwotoneDelete } from "react-icons/ai";
-import { AiTwotoneEdit } from "react-icons/ai";
 
 interface IProps {
   book: IBook;
@@ -18,7 +15,6 @@ interface IProps {
 
 export default function BookCard({ book }: IProps) {
   const { title, author, genre, publicationDate, img, _id } = book;
-  const [deleteBook, { isError, isSuccess }] = useDeleteBookDataMutation();
   const [addBook, { isSuccess: dataStored, isError: notStored }] =
     useAddBookToWishListMutation();
   const [
@@ -27,15 +23,6 @@ export default function BookCard({ book }: IProps) {
   ] = useAddBookToBookListMutation();
 
   const notify = (response: string) => toast(response);
-
-  useEffect(() => {
-    if (isError) {
-      notify("Sorry! Book data can not be deleted properly");
-    }
-    if (isSuccess) {
-      notify("Book Deleted Successfully");
-    }
-  }, [isSuccess, isError]);
 
   useEffect(() => {
     if (notStored) {
@@ -123,27 +110,14 @@ export default function BookCard({ book }: IProps) {
       });
   };
 
-  const handleDeleteBook = (id: any) => {
-    const proceed = window.confirm(`Are you sure you want to delete`);
-    if (proceed) {
-      deleteBook(id)
-        .unwrap()
-        .then(() => {
-          console.log("Book deleted successfully");
-        })
-        .catch((error) => {
-          console.error("Error deleting book:", error);
-        });
-    } else {
-      return;
-    }
-  };
-
   return (
     <div className="card  bg-base-100 shadow-xl">
-      <figure>
-        <img src={img} alt={title} className="w-3/4 h-80" />
-      </figure>
+      <Link to={`/bookDetail/${_id}`}>
+        <figure>
+          <img src={img} alt={title} className="w-3/4 h-80" />
+        </figure>
+      </Link>
+
       <div className="card-body">
         <h2 className="card-title text-2xl">{title}</h2>
         <h2 className="card-title text-2xl">
@@ -160,20 +134,6 @@ export default function BookCard({ book }: IProps) {
         </h2>
 
         <div className="card-actions justify-center mt-6">
-          <Link
-            className="btn  bg-slate-100 border-transparent p-2 m-1"
-            to={`/updateBook/${_id}`}
-            title="Edit"
-          >
-            <AiTwotoneEdit className="text-2xl" />
-          </Link>
-          <button
-            className="btn bg-slate-100 border-transparent p-2 m-1"
-            onClick={() => handleDeleteBook(_id)}
-            title="Remove"
-          >
-            <AiTwotoneDelete className="text-2xl" />
-          </button>
           <button
             onClick={() => onSubmit(book)}
             className="btn bg-slate-100 border-transparent p-2 m-1"

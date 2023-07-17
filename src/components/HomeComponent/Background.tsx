@@ -16,7 +16,7 @@ export default function Background() {
         <button className="btn btn-primary mt-5">Explore Now</button>
       </div>
       <div>
-        <img src={cover} alt="Mobile" className="sm:h-48 lg:h-full" />
+        <img src={cover} alt="Book" className="sm:h-48 lg:h-full" />
       </div>
     </div>
   );

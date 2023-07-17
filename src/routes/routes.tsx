@@ -10,6 +10,7 @@ import UpdateBook from "../pages/UpdateBook";
 import WishList from "../pages/WishList";
 import BookList from "../pages/BookList";
 import PrivateRoute from "./PrivateRoute";
+import BookDetail from "../components/AllBookComponent/BookDetail";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const routes = createBrowserRouter([
             <BookList />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/bookDetail/:id",
+        element: <BookDetail />,
       },
     ],
   },
