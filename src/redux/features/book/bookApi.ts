@@ -12,6 +12,12 @@ const bookApi = api.injectEndpoints({
             query: () => '/wishList',
             providesTags: ['books'],
         }),
+
+        getBooksFromBookList: builder.query({
+            query: () => '/bookList',
+            providesTags: ['books'],
+        }),
+
         getSearchBook: builder.query({
             query: (searchTerm) => `/book/?searchTerm=${searchTerm}`
         }),
@@ -63,6 +69,14 @@ const bookApi = api.injectEndpoints({
             }),
         }),
 
+        addBookToBookList: builder.mutation({
+            query: ({ data }) => ({
+                url: '/bookList',
+                method: 'POST',
+                body: data
+            }),
+        }),
+
         loginUserData: builder.mutation({
             query: ({ data }) => ({
                 url: '/auth/login',
@@ -74,6 +88,15 @@ const bookApi = api.injectEndpoints({
         updateBookData: builder.mutation({
             query: ({ id, data }) => ({
                 url: `/book/${id}`,
+                method: 'PATCH',
+                body: data,
+            }),
+            invalidatesTags: ['books']
+        }),
+
+        updateBookListData: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/bookList/${id}`,
                 method: 'PATCH',
                 body: data,
             }),
@@ -99,6 +122,7 @@ const bookApi = api.injectEndpoints({
 export const {
     useGetBooksQuery,
     useGetBooksFromWishListQuery,
+    useGetBooksFromBookListQuery,
     useGetSearchBookQuery,
     useGetSingleBookQuery,
     useGetFilterBookQuery,
@@ -106,7 +130,9 @@ export const {
     useAddBookToWishListMutation,
     usePostUserDataMutation,
     useLoginUserDataMutation,
+    useAddBookToBookListMutation,
     useUpdateBookDataMutation,
+    useUpdateBookListDataMutation,
     useDeleteBookDataMutation,
     useDeleteBookDataFromWishListMutation
 } = bookApi
