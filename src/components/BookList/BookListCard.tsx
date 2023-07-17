@@ -21,7 +21,7 @@ export default function BookListCard({ book }: IProps) {
     }
   }, [isSuccess, isError]);
 
-  const statusHandle = (id: string) => {
+  const statusHandle = (id: any) => {
     updateBookData({ id, data: { status: "Complete Reading" } });
   };
   return (
@@ -45,12 +45,21 @@ export default function BookListCard({ book }: IProps) {
         </h2>
 
         <div className="card-actions justify-center mt-6">
-          <button
-            className="btn bg-green-700 text-white p-3 hover:bg-red-800"
-            onClick={() => statusHandle(_id)}
-          >
-            Status: {status}
-          </button>
+          {status === "reading" ? (
+            <button
+              className="btn bg-green-700 text-white p-3 hover:bg-red-800"
+              onClick={() => statusHandle(_id)}
+            >
+              Status: {status}
+            </button>
+          ) : (
+            <button
+              className="btn bg-blue-700 text-white p-3 hover:bg-red-800"
+              onClick={() => statusHandle(_id)}
+            >
+              Status: {status}
+            </button>
+          )}
         </div>
       </div>
     </div>
