@@ -29,7 +29,7 @@ const bookApi = api.injectEndpoints({
         }),
         getFilterBook: builder.query({
             query: ({ genre, publicationYear }) => {
-                let queryString = '/book/';
+                let queryString = '/book';
 
                 if (genre && publicationYear) {
                     queryString += `/?genre=${genre}&publicationYear=${publicationYear}`;
