@@ -9,7 +9,12 @@ import { setLoading } from "../redux/features/user/userSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [postUser, { isLoading, isError, isSuccess }] =
     usePostUserDataMutation();
   const dispatch = useAppDispatch();
@@ -164,6 +169,9 @@ export default function Signup() {
               })}
               className="input input-bordered w-full max-w-xs"
             />
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
           </div>
           <input
             className="btn btn-accent w-full mt-4"

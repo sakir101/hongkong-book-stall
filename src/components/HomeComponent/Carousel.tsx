@@ -13,7 +13,7 @@ export default function Carousel() {
     refetchOnMountOrArgChange: true,
   });
 
-  const settings = {
+  const settings: any = {
     dots: false,
     infinite: true,
     fade: true,

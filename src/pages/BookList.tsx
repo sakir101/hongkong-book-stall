@@ -1,7 +1,7 @@
 import BookListCard from "../components/BookList/BookListCard";
 import Loading from "../components/Loading/Loading";
 import { useGetBooksFromBookListQuery } from "../redux/features/book/bookApi";
-import { IBook } from "../types/globalTypes";
+import { IBookList } from "../types/globalTypes";
 
 export default function BookList() {
   const { data, isLoading } = useGetBooksFromBookListQuery(undefined, {
@@ -19,7 +19,7 @@ export default function BookList() {
       ) : data?.data?.length ? (
         <div className="grid gap-[34px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto my-10 mt-[100px] lg:w-3/4 ">
           {data?.data?.length &&
-            data?.data?.map((book: IBook) => (
+            data?.data?.map((book: IBookList) => (
               <BookListCard key={book._id} book={book} />
             ))}
         </div>
