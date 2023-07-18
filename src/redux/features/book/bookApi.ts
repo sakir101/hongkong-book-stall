@@ -5,16 +5,16 @@ import { api } from "../../api/apiSlice"
 const bookApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getBooks: builder.query({
-            query: () => '/book',
+            query: (limit) => `/book?limit=${limit}`,
             providesTags: ['books'],
         }),
         getBooksFromWishList: builder.query({
-            query: () => '/wishList',
+            query: (limit) => `/wishList?limit=${limit}`,
             providesTags: ['books'],
         }),
 
         getBooksFromBookList: builder.query({
-            query: () => '/bookList',
+            query: (limit) => `/bookList?limit=${limit}`,
             providesTags: ['books'],
         }),
 

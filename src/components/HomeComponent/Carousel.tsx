@@ -79,7 +79,7 @@ export default function Carousel() {
           ))}
         </Slider>
       ) : (
-        <p>No books available</p>
+        <p className="text-xl text-red-500 font-bold">Data Load Error</p>
       )}
     </div>
   );

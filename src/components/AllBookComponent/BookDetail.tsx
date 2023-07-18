@@ -117,68 +117,78 @@ export default function BookDetail() {
           <p></p>
         )}
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center mt-10">
-          <input
-            type="text"
-            placeholder="Add your review"
-            className="input input-bordered input-primary w-3/4 lg:w-1/2 border-2 shadow-md"
-            {...register("review", {
-              required: true,
-            })}
-          />
-        </div>
-
-        <div className="rating my-5 flex justify-center">
-          <span className="px-5 text-xl font-bold">Give Rating:</span>
-          <input
-            type="radio"
-            value="1"
-            className="mask mask-star-2 bg-green-500"
-            {...register("rating")}
-          />
-          <input
-            type="radio"
-            value="2"
-            className="mask mask-star-2 bg-green-500"
-            {...register("rating")}
-          />
-          <input
-            type="radio"
-            value="3"
-            className="mask mask-star-2 bg-green-500"
-            {...register("rating")}
-          />
-          <input
-            type="radio"
-            value="4"
-            className="mask mask-star-2 bg-green-500"
-            {...register("rating")}
-          />
-          <input
-            type="radio"
-            value="5"
-            className="mask mask-star-2 bg-green-500"
-            {...register("rating")}
-          />
-        </div>
-        <div className="flex justify-center mt-4 mb-10">
-          <button className="btn btn-primary">Send</button>
-        </div>
-      </form>
-
-      <div className="px-20">
-        {data?.data?.comments?.map((comment: string, index: number) => (
-          <div key={index} className="flex gap-3 items-center mb-5">
-            <div className="avatar">
-              <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?w=2000" />
-              </div>
-            </div>
-            <p className="p-5 bg-slate-200 rounded-3xl">{comment}</p>
+      {user?.email === null ? (
+        <p></p>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex justify-center mt-10">
+            <input
+              type="text"
+              placeholder="Add your review"
+              className="input input-bordered input-primary w-3/4 lg:w-1/2 border-2 shadow-md"
+              {...register("review", {
+                required: true,
+              })}
+            />
           </div>
-        ))}
-      </div>
+
+          <div className="rating my-5 flex justify-center">
+            <span className="px-5 text-xl font-bold">Give Rating:</span>
+            <input
+              type="radio"
+              value="1"
+              className="mask mask-star-2 bg-green-500"
+              {...register("rating")}
+            />
+            <input
+              type="radio"
+              value="2"
+              className="mask mask-star-2 bg-green-500"
+              {...register("rating")}
+            />
+            <input
+              type="radio"
+              value="3"
+              className="mask mask-star-2 bg-green-500"
+              {...register("rating")}
+            />
+            <input
+              type="radio"
+              value="4"
+              className="mask mask-star-2 bg-green-500"
+              {...register("rating")}
+            />
+            <input
+              type="radio"
+              value="5"
+              className="mask mask-star-2 bg-green-500"
+              {...register("rating")}
+            />
+          </div>
+          <div className="flex justify-center mt-4 mb-10">
+            <button className="btn btn-primary">Send</button>
+          </div>
+        </form>
+      )}
+
+      {user?.email === null ? (
+        <p className="text-center text-xl text-blue-500 font-bold">
+          Login to see comment
+        </p>
+      ) : (
+        <div className="px-20">
+          {data?.data?.comments?.map((comment: string, index: number) => (
+            <div key={index} className="flex gap-3 items-center mb-5">
+              <div className="avatar">
+                <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?w=2000" />
+                </div>
+              </div>
+              <p className="p-5 bg-slate-200 rounded-3xl">{comment}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
