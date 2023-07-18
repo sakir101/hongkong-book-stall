@@ -65,15 +65,10 @@ export default function BookCard({ book }: IProps) {
       },
     };
 
-    console.log(newBook);
     addBook(newBook)
       .unwrap()
-      .then((response) => {
-        console.log("response:", response);
-      })
-      .catch((error: string) => {
-        console.error("Error posting data:", error);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
 
   const submitToBookList = (book: any) => {
@@ -99,15 +94,10 @@ export default function BookCard({ book }: IProps) {
       },
     };
 
-    console.log(newBook);
     bookToBookList(newBook)
       .unwrap()
-      .then((response) => {
-        console.log("response:", response);
-      })
-      .catch((error: string) => {
-        console.error("Error posting data:", error);
-      });
+      .then(() => {})
+      .catch(() => {});
   };
 
   return (

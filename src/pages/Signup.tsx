@@ -48,7 +48,7 @@ export default function Signup() {
         password,
       },
     };
-    console.log(newData);
+
     postUser(newData)
       .then((res: IResponse) => {
         const email = res?.data?.data?.email;
@@ -62,9 +62,7 @@ export default function Signup() {
           );
         }
       })
-      .catch((error: string) => {
-        console.error("Error posting data:", error);
-      });
+      .catch(() => {});
   };
 
   return (

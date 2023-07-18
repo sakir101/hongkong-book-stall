@@ -13,7 +13,6 @@ export default function BooksData() {
     refetchOnMountOrArgChange: true,
   });
 
-  console.log(data);
   const { result } = useAppSelector((state) => state.search);
   const { data: book } = useGetSearchBookQuery(result);
   const { genre, publicationYear } = useAppSelector((state) => state.filter);

@@ -20,9 +20,7 @@ const cartSlice = createSlice({
                 (book) => book._id === action.payload._id
             )
 
-            if (existing) {
-                console.log("Book is exist");
-            }
+            if (existing) { }
 
         },
         removeFromCart: (state, action: PayloadAction<IBook>) => {

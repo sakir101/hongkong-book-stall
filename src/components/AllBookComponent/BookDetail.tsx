@@ -50,19 +50,14 @@ export default function BookDetail() {
     if (proceed) {
       deleteBook(id)
         .unwrap()
-        .then(() => {
-          console.log("Book deleted successfully");
-        })
-        .catch((error) => {
-          console.error("Error deleting book:", error);
-        });
+        .then(() => {})
+        .catch(() => {});
     } else {
       return;
     }
   };
 
   const onSubmit = (data: any) => {
-    console.log(data);
     updateBookData({
       id,
       data: { comments: [data?.review], rating: [data?.rating] },

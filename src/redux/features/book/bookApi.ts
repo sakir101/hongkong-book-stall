@@ -32,7 +32,6 @@ const bookApi = api.injectEndpoints({
                 let queryString = '/book/';
 
                 if (genre && publicationYear) {
-                    console.log(1)
                     queryString += `/?genre=${genre}&publicationYear=${publicationYear}`;
                 } else if (genre) {
 

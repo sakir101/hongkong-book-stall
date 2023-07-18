@@ -25,7 +25,6 @@ export default function login() {
   }, [isSuccess, isError, navigate, from]);
 
   const handleLogin = (data: any) => {
-    console.log(data);
     loginUser({ data })
       .then((res: IResponse) => {
         const email = res?.data?.data?.email;
@@ -39,9 +38,7 @@ export default function login() {
           );
         }
       })
-      .catch((error: string) => {
-        console.error("Error posting data:", error);
-      });
+      .catch(() => {});
   };
 
   return (

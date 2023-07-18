@@ -27,12 +27,8 @@ export default function WishListCard({ book }: IProps) {
     if (proceed) {
       deleteBook(id)
         .unwrap()
-        .then(() => {
-          console.log("Book deleted successfully");
-        })
-        .catch((error) => {
-          console.error("Error deleting book:", error);
-        });
+        .then(() => {})
+        .catch(() => {});
     } else {
       return;
     }

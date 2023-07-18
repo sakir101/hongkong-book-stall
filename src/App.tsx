@@ -15,8 +15,6 @@ function App() {
   if (storedUserData) {
     userData = JSON.parse(storedUserData);
     // Use the userData object as needed
-    console.log(userData.email);
-    console.log(userData.name);
     dispatch(setLoading(false));
     dispatch(setUser(userData.email));
     dispatch(setUserName(userData.name));
