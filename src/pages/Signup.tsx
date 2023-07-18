@@ -169,7 +169,7 @@ export default function Signup() {
               })}
               className="input input-bordered w-full max-w-xs"
             />
-            {errors.password && (
+            {errors.password && typeof errors.password.message === "string" && (
               <p className="text-red-500">{errors.password.message}</p>
             )}
           </div>
