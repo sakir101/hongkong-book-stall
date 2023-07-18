@@ -56,7 +56,7 @@ export default function BooksData() {
       {isLoading ? (
         <Loading />
       ) : books?.length ? (
-        <div className="grid gap-[34px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto my-10 mt-[100px] w-3/4 ">
+        <div className="grid gap-[34px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto my-10 mt-[100px] lg:w-3/4 ">
           {books?.length &&
             books?.map((book: IBook) => (
               <BookCard key={book._id} book={book} />

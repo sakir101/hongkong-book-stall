@@ -24,6 +24,9 @@ const bookApi = api.injectEndpoints({
         getSingleBook: builder.query({
             query: (id) => `/book/${id}`
         }),
+        getMaxRatedBook: builder.query({
+            query: () => '/book/?maxRate'
+        }),
         getFilterBook: builder.query({
             query: ({ genre, publicationYear }) => {
                 let queryString = '/book/';
@@ -125,6 +128,7 @@ export const {
     useGetBooksFromBookListQuery,
     useGetSearchBookQuery,
     useGetSingleBookQuery,
+    useGetMaxRatedBookQuery,
     useGetFilterBookQuery,
     usePostBookDataMutation,
     useAddBookToWishListMutation,

@@ -119,8 +119,8 @@ export default function BookCard({ book }: IProps) {
       </Link>
 
       <div className="card-body">
-        <h2 className="card-title text-2xl">{title}</h2>
-        <h2 className="card-title text-2xl">
+        <h2 className="card-title text:lg lg:text-2xl">{title}</h2>
+        <h2 className="card-title text-md lg:text-2xl">
           <span>Author:</span>
           <span className="text-blue-800">{author}</span>
         </h2>
@@ -139,14 +139,14 @@ export default function BookCard({ book }: IProps) {
             className="btn bg-slate-100 border-transparent p-2 m-1"
             title="Wish List"
           >
-            <TbJewishStarFilled className="text-2xl" />
+            <TbJewishStarFilled className="text-lg lg:text-2xl" />
           </button>
           <button
             onClick={() => submitToBookList(book)}
             className="btn bg-slate-100 border-transparent p-2 m-1"
             title="Book List"
           >
-            <BiSolidCommentAdd className="text-2xl" />
+            <BiSolidCommentAdd className="text-lg lg:text-2xl" />
           </button>
         </div>
       </div>

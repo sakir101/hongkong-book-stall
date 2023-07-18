@@ -30,8 +30,8 @@ export default function BookListCard({ book }: IProps) {
         <img src={img} alt={title} className="w-3/4 h-80" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-2xl">{title}</h2>
-        <h2 className="card-title text-xl">
+        <h2 className="card-title txt-lg lg:text-2xl">{title}</h2>
+        <h2 className="card-title text-md lg:text-xl">
           <span>Author:</span>
           <span className="text-blue-800">{author}</span>
         </h2>

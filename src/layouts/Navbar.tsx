@@ -66,7 +66,7 @@ export default function Navbar() {
                 <label tabIndex={2} className="btn btn-ghost lg:hidden">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className="h-5 w-5 text-white font-bold"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -88,7 +88,7 @@ export default function Navbar() {
               </div>
               <a
                 href="/"
-                className="btn btn-ghost normal-case text-xl text-white"
+                className="btn btn-ghost normal-case text-xl text-white hidden lg:block"
               >
                 Hongkong Book Stall
               </a>
@@ -127,7 +127,7 @@ export default function Navbar() {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="hidden lg:block">
                 <p className="text-base font-bold mt-3 text-white">
                   {user.firstName ? (
                     <span>{user.firstName}</span>

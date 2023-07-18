@@ -62,8 +62,11 @@ export default function BookDetail() {
   };
 
   const onSubmit = (data: any) => {
-    console.log(data?.review);
-    updateBookData({ id, data: { comments: [data?.review] } });
+    console.log(data);
+    updateBookData({
+      id,
+      data: { comments: [data?.review], rating: [data?.rating] },
+    });
   };
 
   return (
@@ -120,10 +123,45 @@ export default function BookDetail() {
             type="text"
             placeholder="Add your review"
             className="input input-bordered input-primary w-3/4 lg:w-1/2 border-2 shadow-md"
-            {...register("review")}
+            {...register("review", {
+              required: true,
+            })}
           />
         </div>
 
+        <div className="rating my-5 flex justify-center">
+          <span className="px-5 text-xl font-bold">Give Rating:</span>
+          <input
+            type="radio"
+            value="1"
+            className="mask mask-star-2 bg-green-500"
+            {...register("rating")}
+          />
+          <input
+            type="radio"
+            value="2"
+            className="mask mask-star-2 bg-green-500"
+            {...register("rating")}
+          />
+          <input
+            type="radio"
+            value="3"
+            className="mask mask-star-2 bg-green-500"
+            {...register("rating")}
+          />
+          <input
+            type="radio"
+            value="4"
+            className="mask mask-star-2 bg-green-500"
+            {...register("rating")}
+          />
+          <input
+            type="radio"
+            value="5"
+            className="mask mask-star-2 bg-green-500"
+            {...register("rating")}
+          />
+        </div>
         <div className="flex justify-center mt-4 mb-10">
           <button className="btn btn-primary">Send</button>
         </div>
