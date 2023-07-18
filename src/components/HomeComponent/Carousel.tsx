@@ -1,7 +1,7 @@
 export default function Carousel() {
   return (
     <div className="flex flex-col-reverse lg:flex-row justify-around ">
-      <div className="my-auto">
+      <div className="my-0 lg:my-auto text-center lg:text-start mb-10 lg:mb-0">
         <h1 className="text-4xl lg:text-6xl font-bold ">
           Most Selling <br />
           Books <br />
@@ -12,8 +12,8 @@ export default function Carousel() {
           your high street at the same time
         </p>
       </div>
-      <div className="carousel w-1/2">
-        <div id="slide1" className="carousel-item relative w-full">
+      <div className="carousel w-3/4 lg:w-1/2  mx-auto lg:mx-0 p-0">
+        <div id="slide1" className="carousel-item relative  w-full ">
           <img
             src="https://boideshik.com/wp-content/uploads/2021/03/nis.jpg"
             className="w-auto mx-auto h-1/2 my-auto"

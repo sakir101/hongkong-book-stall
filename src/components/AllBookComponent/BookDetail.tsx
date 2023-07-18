@@ -15,7 +15,7 @@ export default function BookDetail() {
   const { id } = useParams();
   const { data } = useGetSingleBookQuery(id, {
     refetchOnMountOrArgChange: true,
-    pollingInterval: 30000,
+    pollingInterval: 1000,
   });
   const [deleteBook, { isError, isSuccess }] = useDeleteBookDataMutation();
   const { user } = useAppSelector((state) => state.user);
@@ -69,7 +69,7 @@ export default function BookDetail() {
   return (
     <div>
       <div className="flex flex-col-reverse lg:flex-row justify-center items-center py-5">
-        <div className="my-auto mx-16">
+        <div className="mt-5 lg:my-auto mx-16 text-center lg:text-start">
           <h1 className="text-2xl lg:text-4xl font-bold">
             {data?.data?.title}
           </h1>
@@ -86,11 +86,11 @@ export default function BookDetail() {
             <span>{data?.data?.publicationDate}</span>
           </p>
         </div>
-        <div>
+        <div className="mx-20 lg-mx-0">
           <img src={data?.data?.img} alt="Book" className="sm:h-48 lg:h-3/4" />
         </div>
       </div>
-      <div className="flex justify-center my-10">
+      <div className="flex justify-center my-5 lg:my-10">
         {user?.email === data?.data?.publisherEmail ? (
           <Link
             className="btn  bg-blue-600 hover:bg-blue-700 text-white"
@@ -119,7 +119,7 @@ export default function BookDetail() {
           <input
             type="text"
             placeholder="Add your review"
-            className="input input-bordered input-primary w-1/2 border-2 shadow-md"
+            className="input input-bordered input-primary w-3/4 lg:w-1/2 border-2 shadow-md"
             {...register("review")}
           />
         </div>
@@ -129,10 +129,15 @@ export default function BookDetail() {
         </div>
       </form>
 
-      <div>
+      <div className="px-20">
         {data?.data?.comments?.map((comment: string, index: number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
-            <p>{comment}</p>
+            <div className="avatar">
+              <div className="w-7 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?w=2000" />
+              </div>
+            </div>
+            <p className="p-5 bg-slate-200 rounded-3xl">{comment}</p>
           </div>
         ))}
       </div>

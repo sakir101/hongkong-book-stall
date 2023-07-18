@@ -3,6 +3,7 @@ import {
   publicationYearResult,
 } from "../../redux/features/filter/filterSlice";
 import { useAppDispatch } from "../../redux/hook";
+import "./FilterField.css";
 
 export default function FilterField() {
   const dispatch = useAppDispatch();
@@ -30,17 +31,16 @@ export default function FilterField() {
         <option value="Fantasy">Fantasy</option>
         <option value="Roamntic">Roamntic</option>
       </select>
-      <select
+      <input
+        list="browsers"
+        name="browser"
+        placeholder="Select a year"
+        className="border-2  border-stone-600 w-[140px] shadow-md select-sm rounded-lg text-xl h-10"
         onChange={handlePublicationYear}
-        className="select select-bordered border-2 border-stone-600 select-outline shadow-md select-sm w-auto  text-xl h-10"
-      >
+      />
+      <datalist id="browsers" onChange={handlePublicationYear} className="">
         <option disabled selected>
           <p>Select a year</p>
-          <input
-            type="text"
-            className="input input-bordered input-sm w-full max-w-xs mt-2"
-            placeholder="Type a year"
-          />
         </option>
         <option value="">none</option>
         {Array.from({ length: 2024 - 1900 }, (_, index) => (
@@ -48,7 +48,7 @@ export default function FilterField() {
             {index + 1900}
           </option>
         ))}
-      </select>
+      </datalist>
     </div>
   );
 }
