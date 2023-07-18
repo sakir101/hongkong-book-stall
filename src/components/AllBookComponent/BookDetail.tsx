@@ -144,6 +144,7 @@ export default function BookDetail() {
             <input
               type="radio"
               value="3"
+              defaultChecked
               className="mask mask-star-2 bg-green-500"
               {...register("rating")}
             />
